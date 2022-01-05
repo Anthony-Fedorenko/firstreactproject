@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/socialreactproject/static/css/main.76186f2d.chunk.css",
+    "main.js": "/socialreactproject/static/js/main.231e1db9.chunk.js",
+    "main.js.map": "/socialreactproject/static/js/main.231e1db9.chunk.js.map",
+    "runtime-main.js": "/socialreactproject/static/js/runtime-main.8e3639a8.js",
+    "runtime-main.js.map": "/socialreactproject/static/js/runtime-main.8e3639a8.js.map",
+    "static/js/2.b7050ba7.chunk.js": "/socialreactproject/static/js/2.b7050ba7.chunk.js",
+    "static/js/2.b7050ba7.chunk.js.map": "/socialreactproject/static/js/2.b7050ba7.chunk.js.map",
+    "static/css/3.e0de0645.chunk.css": "/socialreactproject/static/css/3.e0de0645.chunk.css",
+    "static/js/3.6a525720.chunk.js": "/socialreactproject/static/js/3.6a525720.chunk.js",
+    "static/js/3.6a525720.chunk.js.map": "/socialreactproject/static/js/3.6a525720.chunk.js.map",
+    "static/css/4.b2525666.chunk.css": "/socialreactproject/static/css/4.b2525666.chunk.css",
+    "static/js/4.e6e6b15d.chunk.js": "/socialreactproject/static/js/4.e6e6b15d.chunk.js",
+    "static/js/4.e6e6b15d.chunk.js.map": "/socialreactproject/static/js/4.e6e6b15d.chunk.js.map",
+    "index.html": "/socialreactproject/index.html",
+    "static/css/3.e0de0645.chunk.css.map": "/socialreactproject/static/css/3.e0de0645.chunk.css.map",
+    "static/css/4.b2525666.chunk.css.map": "/socialreactproject/static/css/4.b2525666.chunk.css.map",
+    "static/css/main.76186f2d.chunk.css.map": "/socialreactproject/static/css/main.76186f2d.chunk.css.map",
+    "static/js/2.b7050ba7.chunk.js.LICENSE.txt": "/socialreactproject/static/js/2.b7050ba7.chunk.js.LICENSE.txt",
+    "static/media/preloader.db1a68d1.svg": "/socialreactproject/static/media/preloader.db1a68d1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e3639a8.js",
+    "static/js/2.b7050ba7.chunk.js",
+    "static/css/main.76186f2d.chunk.css",
+    "static/js/main.231e1db9.chunk.js"
+  ]
+}
