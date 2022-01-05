@@ -9,12 +9,12 @@
 }
 .dialogsItems a {
     text-decoration: none;
-    color: white;
+    color: darkslategray;
 }
 .messages {
     padding: 10px;
 }
 
 .messages .dialog {
-color: whitesmoke;
+color: darkslategray;
 }

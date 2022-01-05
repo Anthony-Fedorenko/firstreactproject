@@ -1,11 +1,11 @@
 .nav {
     grid-area: n;
-    background-color: burlywood;
+    background-color: lavender;
     padding: 30px;
 }
 
 .item a {
-    color: aliceblue;
+    color: gray;
     text-decoration: none;
 }
 
