@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
@@ -13,11 +13,9 @@ import {compose} from "redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./Redux/reduxStore";
-import {withSuspense} from "./Hoc/withSuspense";
-// import ProfileContainer from "./components/Profile/ProfileContainer";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+
 
 
 class App extends React.Component {
@@ -34,20 +32,26 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/profile/:userId?'
-                           render={withSuspense(ProfileContainer)}/>
-                    <Route path='/dialogs'
-                           render={withSuspense(DialogsContainer)}/>
-                    <Route path='/users'
-                           render={() => <UsersContainer/>}/>
-                    <Route path='/news'
-                           render={() => <News/>}/>
-                    <Route path='/music'
-                           render={() => <Music/>}/>
-                    <Route path='/settings'
-                           render={() => <Settings/>}/>
-                    <Route path='/login'
-                           render={() => <LoginPage/>}/>
+                    {/*<Switch>*/}
+                    {/*    <Route exact path='/'*/}
+                    {/*           render={() => <Redirect to={'/profile'}/>}/>*/}
+                        <Route path='/profile/:userId?'
+                               render={() => <ProfileContainer/>}/>
+                        <Route path='/dialogs'
+                               render={() => <DialogsContainer/>}/>
+                        <Route path='/users'
+                               render={() => <UsersContainer/>}/>
+                        <Route path='/news'
+                               render={() => <News/>}/>
+                        <Route path='/music'
+                               render={() => <Music/>}/>
+                        <Route path='/settings'
+                               render={() => <Settings/>}/>
+                        <Route path='/login'
+                               render={() => <LoginPage/>}/>
+                        {/*<Route path='*'*/}
+                        {/*       render={() => <div>404 NOT FOUND</div>}/>*/}
+                    {/*</Switch>*/}
                 </div>
             </div>
         )
@@ -64,10 +68,10 @@ let AppContainer = compose(
     connect(mapStateToProps, {initializeApp}))(App)
 
 const MainJSApp = (props) => {
-    return <HashRouter>
+    return <BrowserRouter>
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
 }
 export default MainJSApp
