@@ -40,7 +40,7 @@ class App extends React.Component {
                         <Route path='/dialogs'
                                render={() => <DialogsContainer/>}/>
                         <Route path='/users'
-                               render={() => <UsersContainer/>}/>
+                               render={() => <UsersContainer pageTitle={'samurai'}/>}/>
                         <Route path='/news'
                                render={() => <News/>}/>
                         <Route path='/music'
