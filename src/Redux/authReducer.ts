@@ -1,5 +1,7 @@
-import {authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI} from "../Api/Api";
+import {ResultCodeForCaptchaEnum, ResultCodesEnum} from "../Api/Api";
 import {stopSubmit} from "redux-form";
+import {authAPI} from "../Api/AuthApi";
+import {securityAPI} from "../Api/SecurityApi";
 
 const SET_USER_DATA = 'react-network/auth/SET_USER_DATA'
 const GET_CAPTCHA_URL_SUCCESS = 'react-network/auth/GET_CAPTCHA_URL_SUCCESS'
@@ -69,7 +71,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
+        if (data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
         let message = data.messages.length > 0 ? data.messages[0] : 'Some error'
@@ -79,8 +81,8 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
 
-    const response = await securityAPI.getCaptchaUrl()
-    const captchaUrl = response.data.url
+    const data = await securityAPI.getCaptchaUrl()
+    const captchaUrl = data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 

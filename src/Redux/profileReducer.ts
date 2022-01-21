@@ -1,6 +1,6 @@
-import {profileAPI, usersAPI} from "../Api/Api";
 import {stopSubmit} from "redux-form";
-import {PhotosType, PostType, ProfileType} from "../types/types";
+import {PhotosType, PostType, ProfileType} from "../types/types"
+import {profileAPI} from "../Api/ProfileApi";
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -88,34 +88,34 @@ export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType
 
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
-    let response = await usersAPI.getProfile(userId)
-    dispatch(setUserProfile(response.data))
+    const data = await profileAPI.getProfile(userId)
+    dispatch(setUserProfile(data))
 
 }
 export const getStatus = (userId: number) => async (dispatch: any) => {
-    let response = await profileAPI.getStatus(userId)
-    dispatch(savePhotoSuccess(response.data.photos))
+    let data = await profileAPI.getStatus(userId)
+    dispatch(setStatus(data))
 }
 export const updateStatus = (status: string) => async (dispatch: any) => {
-    let response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0) {
+    let data = await profileAPI.updateStatus(status)
+    if (data.resultCode === 0) {
         dispatch(setStatus(status))
     }
 }
 export const savePhoto = (file: any) => async (dispatch: any) => {
-    let response = await profileAPI.savePhoto(file)
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos))
+    let data = await profileAPI.savePhoto(file)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos))
     }
 }
 export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
     const userID = getState().auth.userId
-    const response = await profileAPI.saveProfile(profile)
-    if (response.data.resultCode === 0) {
+    const data = await profileAPI.saveProfile(profile)
+    if (data.resultCode === 0) {
         dispatch(getUserProfile(userID))
     } else {
-        dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}))
-        return Promise.reject(response.data.messages[0])
+        dispatch(stopSubmit('edit-profile', {_error: data.messages[0]}))
+        return Promise.reject(data.messages[0])
     }
 }
 
